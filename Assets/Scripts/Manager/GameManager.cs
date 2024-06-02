@@ -17,7 +17,10 @@ public class GameManager : MonoBehaviour
         GameDataManager.aInstance.SetCurrentStatge(mStateId);
 
         GamePoolManager.aInstance.Init();
+
         GameControl.aInstance.Init();
+        GameControl.aInstance.SetControlObject(mMyPc);
+
         SpawnManager.aInstance.Init();
         FSMStageController.aInstance.Init();
 
@@ -36,6 +39,7 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         FSMStageController.aInstance.OnUpdate(Time.deltaTime);
+        GameControl.aInstance.OnUpdate();
     }
 
     private void FixedUpdate()
